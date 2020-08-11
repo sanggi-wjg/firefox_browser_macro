@@ -37,17 +37,10 @@ class FirefoxDriver:
         self._allow_applet()
 
     def _allow_applet(self):
-        _()
-        pyautogui.click(self.position[0]['x'], self.position[0]['y'])
-
-        _()
-        pyautogui.click(self.position[1]['x'], self.position[1]['y'])
-
-        _()
-        pyautogui.click(self.position[2]['x'], self.position[2]['y'])
-
-        _()
-        pyautogui.click(self.position[3]['x'], self.position[3]['y'])
+        for pos in self.position:
+            if 'x' and 'y' not in pos.keys(): raise KeyError('좌표 값을 확인 해주세요.')
+            _()
+            pyautogui.click(pos['x'], pos['y'])
 
     def print_labels(self):
         _()
